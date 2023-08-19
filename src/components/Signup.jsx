@@ -11,7 +11,7 @@ const Signup = () => {
     e.preventDefault();
 
     console.log(name, email, password);
-    fetch("https://login-server-six.vercel.app/signup", {
+    fetch("https://login-server-six.vercel.app//signup", {
       method: "POST",
       crossDomain: true,
       headers: {

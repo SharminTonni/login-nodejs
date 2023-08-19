@@ -4,7 +4,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://login-server-six.vercel.app/users")
+    fetch("https://login-server-six.vercel.app//users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

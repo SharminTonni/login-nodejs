@@ -8,8 +8,11 @@ const Main = () => {
         SingUp
       </Link>
       <Link to="/login">Login</Link>
-      <Link style={{ marginLeft: "10px" }} to="/users">
-        All Users
+      <Link style={{ marginLeft: "15px", marginRight: "5px" }} to="/addpost">
+        Add Post
+      </Link>
+      <Link style={{ marginLeft: "10px" }} to="/allposts">
+        All Posts
       </Link>
       <Outlet></Outlet>
     </div>

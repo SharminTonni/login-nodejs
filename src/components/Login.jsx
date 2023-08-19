@@ -8,7 +8,7 @@ const Login = () => {
     const password = e.target.password.value;
 
     console.log(email, password);
-    fetch("https://login-server-six.vercel.app/login", {
+    fetch("https://login-server-six.vercel.app//login", {
       method: "POST",
 
       headers: {

@@ -8,6 +8,10 @@ import Login from "./components/Login.jsx";
 import Forgot from "./components/Forgot.jsx";
 import Main from "./components/Main.jsx";
 import Users from "./components/Users.jsx";
+import AddPost from "./components/AddPost";
+import AllPosts from "./components/AllPosts.jsx";
+import EditPost from "./components/EditPost.jsx";
+import AllComments from "./components/AllComments.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +32,27 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <Users></Users>,
+      },
+      {
+        path: "/addpost",
+        element: <AddPost></AddPost>,
+      },
+      {
+        path: "/allposts",
+        element: <AllPosts></AllPosts>,
+        loader: () => fetch("https://login-server-six.vercel.app/allposts"),
+      },
+      {
+        path: "editpost/:id",
+        element: <EditPost></EditPost>,
+        loader: ({ params }) =>
+          fetch(`https://login-server-six.vercel.app/singlepost/${params.id}`),
+      },
+      {
+        path: "comments/:id",
+        element: <AllComments></AllComments>,
+        loader: ({ params }) =>
+          fetch(`https://login-server-six.vercel.app/singlepost/${params.id}`),
       },
     ],
   },
