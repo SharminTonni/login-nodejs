@@ -18,29 +18,29 @@ const router = createBrowserRouter([
     element: <Main></Main>,
     children: [
       {
-        path: "/signup",
+        path: "signup",
         element: <Signup></Signup>,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login></Login>,
       },
       {
-        path: "/forgot",
+        path: "forgot",
         element: <Forgot></Forgot>,
       },
       {
-        path: "/users",
+        path: "users",
         element: <Users></Users>,
       },
       {
-        path: "/addpost",
+        path: "addpost",
         element: <AddPost></AddPost>,
       },
       {
-        path: "/allposts",
+        path: "allposts",
         element: <AllPosts></AllPosts>,
-        loader: () => fetch("https://login-server-six.vercel.app/allposts"),
+        // loader: () => fetch("https://login-server-six.vercel.app/allposts"),
       },
       {
         path: "editpost/:id",

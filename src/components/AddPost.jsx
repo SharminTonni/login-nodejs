@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AddPost = () => {
   const [text, setText] = useState("");
-  const navigate = useNavigate();
+  const token = localStorage.getItem("access_token");
+  console.log(token);
+  let navigate = useNavigate();
+  if (!token) {
+    return <Navigate to="/login"></Navigate>;
+  }
+
   const handlePost = (e) => {
     e.preventDefault();
 
@@ -24,7 +30,7 @@ const AddPost = () => {
   };
   return (
     <div>
-      <h3>Add Your Comment Here</h3>
+      <h3>Add Your post Here</h3>
       <form onSubmit={handlePost}>
         <textarea
           onChange={(e) => setText(e.target.value)}

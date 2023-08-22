@@ -4,7 +4,7 @@ const Forgot = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    fetch("https://login-server-six.vercel.app//reset", {
+    fetch("https://login-server-six.vercel.app/reset", {
       method: "POST",
 
       headers: {

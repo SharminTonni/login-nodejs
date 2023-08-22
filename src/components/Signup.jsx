@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const id = Math.ceil(Math.random() * 100);
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    const user = {
+      email,
+    };
     console.log(name, email, password);
-    fetch("https://login-server-six.vercel.app//signup", {
+    fetch("https://login-server-six.vercel.app/signup", {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -29,9 +32,24 @@ const Signup = () => {
         console.log(data, "userRegister");
         if (data.insertedId) {
           alert("Registration Successful");
+          fetch("https://login-server-six.vercel.app/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("jwt token", data);
+              localStorage.setItem("access_token", data.token);
+              navigate("/addpost");
+            });
         } else {
           alert("Something went wrong");
         }
+
+        e.target.reset();
       });
   };
 
