@@ -3,12 +3,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const AddPost = () => {
   const [text, setText] = useState("");
-  const token = localStorage.getItem("access_token");
-  console.log(token);
+
   let navigate = useNavigate();
-  if (!token) {
-    return <Navigate to="/login"></Navigate>;
-  }
 
   const handlePost = (e) => {
     e.preventDefault();

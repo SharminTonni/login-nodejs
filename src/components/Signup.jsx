@@ -32,21 +32,9 @@ const Signup = () => {
         console.log(data, "userRegister");
         if (data.insertedId) {
           alert("Registration Successful");
-          fetch("https://login-server-six.vercel.app/jwt", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(user),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log("jwt token", data);
-              localStorage.setItem("access_token", data.token);
-              navigate("/addpost");
-            });
+          navigate("/addpost");
         } else {
-          alert("Something went wrong");
+          alert("User Already Registered");
         }
 
         e.target.reset();
@@ -62,6 +50,7 @@ const Signup = () => {
           <div>
             <label style={{ marginRight: "5px" }}>User name:</label>
             <input
+              style={{ padding: "8px" }}
               type="text"
               className="form-control"
               placeholder="Your name"
@@ -73,6 +62,7 @@ const Signup = () => {
             <label style={{ marginRight: "5px" }}>Email address:</label>
             <input
               type="email"
+              style={{ padding: "8px", margin: "5px" }}
               className="form-control"
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
@@ -83,6 +73,7 @@ const Signup = () => {
             <label style={{ marginRight: "5px" }}>Password:</label>
             <input
               type="password"
+              style={{ padding: "8px" }}
               className="form-control"
               placeholder="Enter password"
               onChange={(e) => setPassword(e.target.value)}
@@ -90,7 +81,15 @@ const Signup = () => {
           </div>
 
           <div>
-            <button type="submit" className="btn btn-primary">
+            <button
+              style={{
+                marginTop: "5px",
+                backgroundColor: "lightblue",
+                hover: true,
+              }}
+              type="submit"
+              className="btn btn-primary"
+            >
               Sign Up
             </button>
           </div>

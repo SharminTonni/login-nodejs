@@ -12,6 +12,7 @@ import AddPost from "./components/AddPost";
 import AllPosts from "./components/AllPosts.jsx";
 import EditPost from "./components/EditPost.jsx";
 import AllComments from "./components/AllComments.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         path: "forgot",
         element: <Forgot></Forgot>,
       },
+
       {
         path: "users",
         element: <Users></Users>,

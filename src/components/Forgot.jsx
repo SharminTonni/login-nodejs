@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Forgot = () => {
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
+    console.log(email);
     fetch("https://login-server-six.vercel.app/reset", {
       method: "POST",
 
@@ -16,7 +19,13 @@ const Forgot = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data?.status);
+        if (data.message === "Email sent successfully") {
+          // navigate("/reset");
+          alert("check your email");
+        } else {
+          alert(data.message);
+        }
+
         console.log("userRegister");
       });
   };
@@ -37,7 +46,15 @@ const Forgot = () => {
           </div>
 
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
+            {" "}
+            <button
+              type="submit"
+              style={{
+                marginTop: "5px",
+                backgroundColor: "lightblue",
+                hover: true,
+              }}
+            >
               Submit
             </button>
           </div>

@@ -95,8 +95,9 @@ const Posts = ({ post, posts, setPosts, index }) => {
             style={{
               position: "absolute",
               top: "0",
+              padding: "3px",
               right: "2px",
-              backgroundColor: "red",
+              backgroundColor: "lightblue",
               borderRadius: "10px",
             }}
           >
@@ -113,7 +114,7 @@ const Posts = ({ post, posts, setPosts, index }) => {
           <input type="submit" value="Comment" />
         </form>
         <p>
-          <small>{post.comments.length}</small>
+          <small style={{ marginRight: "2px" }}>{post.comments.length}</small>
           <Link to={`/comments/${post._id}`}>
             <small>All Comments</small>
           </Link>

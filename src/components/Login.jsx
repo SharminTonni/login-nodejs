@@ -7,9 +7,7 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const user = {
-      email,
-    };
+
     console.log(email, password);
     fetch("https://login-server-six.vercel.app/login", {
       method: "POST",
@@ -25,21 +23,11 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "userRegister");
-        if (data.status == "OK") {
+        if (data.status == "ok") {
           alert("login successful");
-          fetch("https://login-server-six.vercel.app/jwt", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(user),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log("jwt token", data);
-              localStorage.setItem("access_token", data.token);
-              navigate("/addpost");
-            });
+          navigate("/addpost");
+        } else {
+          alert(data.status);
         }
         e.target.reset();
       });
@@ -75,12 +63,20 @@ const Login = () => {
           </p>
 
           <div>
-            <button type="submit" className="btn btn-primary">
-              Submit
+            <button
+              style={{
+                marginTop: "5px",
+                backgroundColor: "lightblue",
+                hover: true,
+              }}
+              type="submit"
+              className="btn btn-primary"
+            >
+              Log in
             </button>
           </div>
           <p>
-            Not have an account? <Link to="/signup">Singup</Link>
+            Don't have an account? <Link to="/signup">Singup</Link>
           </p>
         </form>
       </div>
